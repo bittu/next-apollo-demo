@@ -1,4 +1,5 @@
 import { useQuery, gql } from '@apollo/client';
+import Loader from './Loader';
 
 const GET_NAME = gql`
   query NAME {
@@ -10,17 +11,18 @@ const Component = () => {
   const { loading, error, data } = useQuery(GET_NAME);
 
   return (
-    <span>
-      {loading ? '..' : data.name}
-      {error && 'Error: ' + error}
-    </span>
+    loading ? (
+      <Loader />
+    ) : (
+      <span>
+        {error ? (
+          error.message
+        ) : (
+          data.name
+        )}
+      </span>
+    )
   )
 }
-
-const query = gql`
-  query name {
-    name
-  }
-`
 
 export default Component
