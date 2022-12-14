@@ -13,6 +13,7 @@ interface MyContext {
 }
 
 const app = express();
+const port = process.env.PORT || 5000;
 
 const httpServer = http.createServer(app);
 
@@ -31,5 +32,5 @@ app.use(
   }),
 );
 
-await new Promise<void>((resolve) => httpServer.listen({ port: 5000 }, resolve));
-console.log(`🚀 Server ready at http://localhost:5000/graphql`);
+await new Promise<void>((resolve) => httpServer.listen({ port }, resolve));
+console.log(`🚀 Server ready at http://localhost:${port}/graphql`);
