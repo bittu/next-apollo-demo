@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Loader from '../Loader';
 import Card from './Card';
 
-const getList = gql`
+export const getList = gql`
   query GetList($offset: Int, $limit: Int) {
     list(offset: $offset, limit: $limit) {
       id,
@@ -32,7 +32,7 @@ interface TDataList {
 }
 
 export default function CardList() {
-  const [fetchList, { loading, error, data, refetch }] = useLazyQuery<TDataList, TListQueryVars>(getList, { refetchWritePolicy: "merge" });
+  const [fetchList, { loading, error, data, refetch }] = useLazyQuery<TDataList, TListQueryVars>(getList, { refetchWritePolicy: "merge", fetchPolicy: "cache-and-network" });
 
   useEffect(() => {
     if (!data?.list.length) {
@@ -56,9 +56,10 @@ export default function CardList() {
         <Loader />
       ) : (
         <button
+          data-testid="loadMore"
           type="button"
           className="loadMoreBtn"
-          onClick={() => refetch({ offset: data.list.length + 20, limit: 20 })}
+          onClick={() => refetch({ offset: data ? data.list.length + 1 : 0, limit: 20 })}
         >
           {error ? (
             'Retry'

@@ -5,6 +5,7 @@ import React from 'react';
 import { ApolloClient, InMemoryCache, HttpLink, ApolloProvider } from '@apollo/client';
 import Navbar from '../components/NavBar';
 import Head from 'next/head';
+import { offsetLimitPagination } from '@apollo/client/utilities';
 
 const client = new ApolloClient({
   link: new HttpLink({
@@ -15,17 +16,7 @@ const client = new ApolloClient({
       Query: {
         keyFields: [],
         fields: {
-          list: {
-            keyArgs: [],
-            merge(existing = [], incoming, { args: { offset = 0 }}) {
-              console.log('merge...', {existing, incoming, offset})
-              const merged = existing ? existing.slice(0) : [];
-              for (let i = 0; i < incoming.length; ++i) {
-                merged[offset + i] = incoming[i];
-              }
-              return merged;
-            },
-          }
+          list: offsetLimitPagination()
         }
       }
     }

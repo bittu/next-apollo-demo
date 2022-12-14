@@ -3,7 +3,7 @@ import { TData } from './CardList';
 
 const Card: FC<{ user: TData }> = ({ user }) => {
   return (
-    <div className="card">
+    <div className="card" data-testid="cardItem">
       <div className="box">
         <img src={`https://ui-avatars.com/api/?name=${user.name}&rounded=true&background=random&size=32`} alt={user.name}/>
         <h2>{user.name}</h2>
