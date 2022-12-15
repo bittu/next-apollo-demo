@@ -10,6 +10,8 @@ services:
   client:
     container_name: next-apollo-demo-client
     build: ./client
+    environment:
+      - GRAPHQL_HOST=http://localhost:5000/graphql
     ports:
       - '3000:3000'
     depends_on:

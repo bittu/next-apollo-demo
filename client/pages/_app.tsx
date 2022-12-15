@@ -9,7 +9,7 @@ import { offsetLimitPagination } from '@apollo/client/utilities';
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri:'http://localhost:5000/graphql',
+    uri: process.env.GRAPHQL_HOST,
   }),
   cache: new InMemoryCache({
     typePolicies: {
@@ -22,7 +22,6 @@ const client = new ApolloClient({
     }
   }),
 });
-
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
