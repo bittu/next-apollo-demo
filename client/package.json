@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "test:coverage": "npm run test:ci -- --coverage"
+    "test:coverage": "npm run test:ci -- --coverage",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --component"
   },
   "license": "MIT",
   "dependencies": {
@@ -24,6 +26,8 @@
     "@testing-library/react": "13.2.0",
     "@testing-library/user-event": "14.2.0",
     "@types/react": "18.0.9",
+    "cypress": "^11.2.0",
+    "cypress-axe": "^1.1.0",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
     "jest": "28.1.0",

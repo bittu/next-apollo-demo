@@ -20,7 +20,8 @@
     "jsx": "preserve",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": [
     "next-env.d.ts",
@@ -28,6 +29,7 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "cypress"
   ]
 }
