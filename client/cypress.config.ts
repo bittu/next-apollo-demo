@@ -5,7 +5,7 @@ const { combinedEnv } = loadEnvConfig(process.cwd());
 export default defineConfig({
   env: combinedEnv,
   e2e: {
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://nextjs-apollo-demo-ui.herokuapp.com/',
     retries: {
       runMode: 3,
     },

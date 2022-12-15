@@ -12,7 +12,7 @@
     "test:ci": "jest --ci",
     "test:coverage": "npm run test:ci -- --coverage",
     "cy:open": "cypress open",
-    "cy:run": "cypress run --component"
+    "cy:run": "cypress run --e2e"
   },
   "license": "MIT",
   "dependencies": {

@@ -3,7 +3,7 @@
 describe('next-apollo-demo list page', () => {
   beforeEach(() => {
     cy.visit('/list');
-    cy.intercept('POST', 'http://localhost:5000/graphql').as('getList')
+    cy.intercept('POST', 'https://nextjs-apollo-demo-app.herokuapp.com/graphql').as('getList')
   })
 
   it('loads list of 20 items on launch', () => {
